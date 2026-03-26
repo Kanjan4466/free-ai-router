@@ -31,6 +31,14 @@
     "test:watch": "vitest",
     "prepublishOnly": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihuzaifashoukat/free-ai-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ihuzaifashoukat/free-ai-router/issues"
+  },
+  "homepage": "https://github.com/ihuzaifashoukat/free-ai-router#readme",
   "keywords": [
     "ai",
     "openai",
