@@ -1,7 +1,7 @@
 {
   "name": "free-ai-router",
-  "version": "0.1.0",
-  "description": "Zero-cost multi-provider AI router with OpenAI SDK compatibility. Automatically discovers and routes to the best free AI models across NVIDIA, Groq, Cerebras, OpenRouter, and more.",
+  "version": "0.1.1",
+  "description": "150+ free AI models across 20+ providers. Groq, Cerebras, NVIDIA and more with automatic fallback when rate limits hit.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
