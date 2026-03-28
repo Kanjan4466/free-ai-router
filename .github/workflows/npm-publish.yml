@@ -29,7 +29,21 @@ jobs:
       - name: Build JS module
         run: npm run build
 
+      - name: Pack package
+        run: npm pack
+
       - name: Publish to npm
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Upload release asset
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./free-ai-router-${{ github.event.release.tag_name }}.tgz
+          asset_name: free-ai-router-${{ github.event.release.tag_name }}.tgz
+          asset_content_type: application/gzip
